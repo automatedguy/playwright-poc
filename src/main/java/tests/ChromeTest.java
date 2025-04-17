@@ -9,6 +9,5 @@ public class ChromeTest extends TestBase {
     public void testPage() {
         pageBase.navigateTo("http://google.com");
         pageBase.fill("textarea[name='q']", "Playwright");
-        pageBase.close();
     }
 }

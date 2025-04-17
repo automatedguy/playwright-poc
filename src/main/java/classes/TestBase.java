@@ -1,8 +1,10 @@
 package classes;
 
-import com.microsoft.playwright.*;
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Playwright;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 
 public abstract class TestBase {
@@ -21,5 +23,18 @@ public abstract class TestBase {
         pageBase = new PageBase(browser.newPage());
     }
 
+
+    @AfterClass
+    public void tearDown() {
+        if (pageBase != null) {
+            pageBase.close();
+        }
+        if (browser != null) {
+            browser.close();
+        }
+        if (playwright != null) {
+            playwright.close();
+        }
+    }
 
 }
